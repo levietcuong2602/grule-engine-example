@@ -1,0 +1,7 @@
+rule CheckOffer "Check if offer can be applied for user" salience 10 {
+    when
+        UserOfferInput.TotalOrders >= 10 && UserOfferInput.AverageOrderValue > 150 && UserOfferInput.Age >= 20 && UserOfferInput.Age <= 30
+    then
+        UserOfferOutput.IsOfferApplicable = true;
+        Retract("CheckOffer");
+}
